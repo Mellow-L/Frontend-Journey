@@ -1,0 +1,20 @@
+- 异步与同步：Non-Blocking和Blocking，非阻塞和阻塞、
+- async 声明异步函数，返回promise对象
+- await 等待异步操作结果，实现异步操作同步化
+	- ![[Pasted image 20250324164109.png]]
+- Promise对象-异步请求返回结果
+	- 比如axios返回res实际就是一个promise [[axios请求二次封装]]
+	- 包含：
+		- data
+		- status
+		- statusText
+		- headers
+		- config
+	- 表示一个异步操作。
+	- 三种状态
+		- pending-进行中，待处理（unsettled）
+		- resolved-已成功（settled）
+		- reject-已失败（settled）
+	- 其.then()，resolve()，.catch()，.finally()方法处理结果或错误等，均为异步微任务
+	- 主体是同步任务，立即执行
+
