@@ -14,10 +14,13 @@ store：pinia数据仓库
 	- state：数据
 		- 别的组件使用store内数据时，直接解构会失去响应性，需要使用storeToRefs
 		- 重置 $reset,  批量修改 $patch
+		- 在getters和setters中通过this访问state
 	- getters：定义和访问computed计算属性对象
 		- 其他组件直接调用，比如 password:userStore.getDecodedPwd()
 		- 如果存用户数据，可以在这里调用解密函数get密码。
 			- ![[Pasted image 20250324170332.png]]
+		- [[getter写法纠错]]
+			- 
 	- actions：可写性
 		- 修改state中的数据
 		- 类比于java中setter ，可以放一堆对state中数据的set方法

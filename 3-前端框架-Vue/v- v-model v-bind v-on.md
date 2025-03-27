@@ -4,7 +4,8 @@
 - `:has-more="hasMore"` 完整写法是 `v-bind:has-more="hasMore"`
 	- `v-bind：`将js中 `hasMore` 绑定到 `has-more` 属性上
 - `v-bind="item"` 将item对象所有属性作为props传递给子组件，子组件用defineProps接收 [[父子组件传参]]
-	- 相当于 `:id="item.id", :title="item.title", :content="item.content"`
+	- 
+	- 相当于 `:id="item.id", :title="item.title", :content="item.content"` 具名传入到具体属性。
 
 
 事件绑定：

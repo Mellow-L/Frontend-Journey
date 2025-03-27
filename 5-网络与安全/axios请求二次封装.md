@@ -1,6 +1,7 @@
 Axios网络请求库，本质是对XMLHttpREquest的封装
 - 直接使用 
 - 或创建实例使用（不同实例不同配置，多个实例可对接不同后端服务）
+	- axios.create创建实例，可配置baseURL，timeout等
 - **配置优先级**：axios.default 全局默认属性配置 《 axios实例属性配置 《 请求级配置
 - 常用GET，POST，PUT，PATCH，DELETE
 	- PUT 提交少量数据

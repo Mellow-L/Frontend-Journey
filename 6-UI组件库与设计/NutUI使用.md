@@ -130,3 +130,45 @@ app.use(NutUI)
     </nut-tabbar>
 </template>
 ```
+
+- **`nut-searchbar`**
+	- 这里使用了右侧插槽
+```vue
+<nut-searchbar v-model="searchVal" @clear="clearFun"
+	@search="searchFun" placeholder="搜索">
+	<template #rightin>
+		<Search2 @click="searchFun"></Search2>
+	</template>
+	<template #rightout>  
+		<nut-tag type="danger" @click="addArticle">发布文章</nut-tag>
+	</template>
+</nut-searchbar>
+```
+
+- **`nut-swipe-group`**
+	- 单元格左右滑动模块组
+```vue
+<nut-swipe-group>
+	<nut-swipe v-for="(item) in imgContents"
+		:key="item.order"
+		:name="item.order"> 
+		-- 从imgContents图文列表中取到一个item
+		-- 绑定到key和value
+			<nut-textarea v-model="item.img_content" :rows="3" autosize
+				:max-length="2000" limit-show/> 
+			-- 文本输入框
+			<image-uploader v-model:img-src="item.url"
+				@onSuccess="res=>onImgContentSuccess(item,res)">
+			</image-uploader>
+			-- 图片上传组件
+			<template #right>
+				<nut-button shape="square"
+				style="height: 100%"
+				type="danger"
+				@click="deleteImageByItemId(item)">删除
+				</nut-button>
+			</template>
+			-- 右侧插槽 存放左滑的删除控件
+	</nut-swipe>
+</nut-swipe-group>
+```
