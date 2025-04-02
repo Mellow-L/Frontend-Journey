@@ -66,12 +66,18 @@ Promise.resolve()
 answer：
 - catch1: Error: err1
 - then1
-### 手写 Promise.all
-[[promise.all，allSettled]]
-### 手写 Promise.race
-
+### 手写 Promise.all,Promise.race
+[[promise.all，allSettled，race]]
 ### 顺序执行异步任务
-
+- [[语法-杂]] --reduce方法
+```js
+function executeSequentially(functions){
+  return functions.reduce((prev,curr)=>{
+    return prev.then(()=>curr())
+    //then方法在prev()成为fulfilled状态后调用curr()
+  },Promise.resolve())
+}
+```
 ### 并发限制实现
 
 ### Promise 状态变化模拟
@@ -86,7 +92,7 @@ class MyPromise {
     //NOTE: Promise构造函数
     constructor(executor) {
         this.state = "pending"; // Promise 的初始状态
-        this.value = undefined; // 解决或拒绝时的值
+        this.value = undefined; // 解决时的值
         this.reason = undefined; // 拒绝时的原因
         this.onFulfilledCallbacks = []; // 成功后的回调函数队列
         this.onRejectedCallbacks = []; // 失败后的回调函数队列
@@ -129,4 +135,20 @@ class MyPromise {
     }
 }
 
+```
+
+- 实例化时，constructor对应：
+	- 传入executor，executor带resolve和reject参数将在构造器内部写好。
+```js
+const promise = new MyPromise((resolve, reject) => {
+    setTimeout(() => resolve("Success"), 1000);
+});
+```
+- 实例化时，then对应：
+	- 传入这个promise的成功处理函数和失败处理函数。分别在其fulfilled和rejected状态下执行。
+```js
+promise.then(
+    (value) => console.log("Resolved:", value), 
+    (error) => console.log("Rejected:", error)
+);
 ```

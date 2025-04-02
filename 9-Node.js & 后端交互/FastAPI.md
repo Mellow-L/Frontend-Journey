@@ -1,7 +1,8 @@
 以下文件
 - item_router:接口索引到处理逻辑
 - crud：数据库操作
-- schemas：定义数据表
+- models：定义数据表
+- schemas：定义后端返回response_model的格式
 
 ### 解读文章item点赞的后端实现：
 ```python
@@ -46,3 +47,10 @@ class Like(Base):
 - 在表模型中定义表名称、字段（指定主外键等），添加表关联。
 
 在`sql_app/crud.py`文件中添加对Like表的操作函数：
+
+
+涉及User，Item，Like表关联
+- 外键
+	- 必须使用另一张表的**主键**或唯一字段
+	- 支持级联操作CASCADE：ON DELETE CASCADE同步删除
+	- 指定主外键时要用表名称 即`__tablename__=`，而不是relationship中的名称

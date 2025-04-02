@@ -1,3 +1,4 @@
+- **Promise.all手写**
 ```js
 function myPromiseAll(promises) {
   return new Promise((resolve, reject) => {
@@ -21,7 +22,20 @@ const p2 = new Promise((resolve) => setTimeout(() => resolve(2), 1000));
 
 myPromiseAll([p1, p2]).then(console.log); // [1, 2]
 ```
+- `Promise.resolve(promise)`保证 `promise` 一定是 `Promise`
+	- 如果不是promise会被包装成promise
 
+
+- **Promise.race手写**
+```js
+function myPromiseRace(promises) {
+  return new Promise((resolve, reject) => {
+    promises.forEach(promise => {
+      Promise.resolve(promise).then(resolve).catch(reject);
+    });
+  });
+}
+```
 
 Promise.all 和 Promise.allSettled
 - 都是用来处理多个Promise实例，返回一个新的Promise的方法
@@ -40,7 +54,7 @@ const promise3 = new Promise((resolve, reject) => {
 ```
 
 ==Promise.all方法==：*场景：只关注所有promise需成功*
-- 整个Promise被拒绝
+- 一个失败，则整个Promise被拒绝
 ```js
 Promise.all([promise1, promise2, promise3])
 	.then(results => console.log(results))
@@ -62,3 +76,6 @@ Promise.allSettled([promise1, promise2, promise3])
 // {status: "fulfilled", value: "Promise 3 resolved"}
 // ]
 ```
+==Promise.race方法==
+- 一旦迭代器中某个promise被resolve或reject，整个promise就会resolve或reject。
+- race--竞速
