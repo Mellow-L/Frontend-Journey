@@ -23,7 +23,7 @@ const myPromise = new Promise((resolve, reject) => {
 Promise.resolve()
 ```
 
-### 链式调用
+### 链式调用 / 顺序执行异步任务
 题目：顺序执行以下两个异步任务
 ```js
 function task1() {
@@ -47,6 +47,22 @@ task1().then(res => task2(res))
 	- 整个过程中除了task1和task2内部的promise实例，没有别的promise实例被创建。
 	- task1内部返回了一个Promise实例，而这个实例有then方法（根据Promise构造器）用于在状态变更后执行回调。
 		- then内`res => task2(res)`等价于`res => {return task2(res)}`
+
+另一种顺序执行实现（链式调用）
+-  reduce方法--[[数组相关]]
+```js
+function executeSequentially(functions){
+  return functions.reduce((prev,curr)=>{
+    return prev.then(()=>curr())
+    //then方法在prev()成为fulfilled状态后调用curr()
+  },Promise.resolve())
+}
+```
+- reduce方法 累加器prev初始值为Promise.resolve（一个已经fulfilled的promise），可直接使用其then方法
+- 对于promise数组functions中的每一个function，也即每一个promise实例，在then方法中调用它
+- `Promise.resolve().then(curr1).then(curr2).then(curr3)` 形成 Promise 链
+
+
 ### 错误处理陷阱题
 题目：以下代码的输出？
 ```js
@@ -69,15 +85,7 @@ answer：
 ### 手写 Promise.all,Promise.race
 [[promise.all，allSettled，race]]
 ### 顺序执行异步任务
-- [[语法-杂]] --reduce方法
-```js
-function executeSequentially(functions){
-  return functions.reduce((prev,curr)=>{
-    return prev.then(()=>curr())
-    //then方法在prev()成为fulfilled状态后调用curr()
-  },Promise.resolve())
-}
-```
+
 ### 并发限制实现
 
 ### Promise 状态变化模拟
