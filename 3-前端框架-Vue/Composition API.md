@@ -22,3 +22,5 @@ import {createApp} from "vue";
 import App from "@/App.vue";
 const app = createApp(App) --App为根组件
 app.mount('#app') --mount 将根组件挂载到id为app的元素处
+```
+

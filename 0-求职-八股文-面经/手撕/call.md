@@ -1,1 +1,0 @@
-`fn.call(thisArg, arg1, arg2, ...)` 直接调用函数，并手动指定 `this`，类似于 `apply()` 但参数必须逐个传递。==this？？？？==
