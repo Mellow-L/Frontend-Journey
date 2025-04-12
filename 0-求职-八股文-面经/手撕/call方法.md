@@ -5,7 +5,7 @@
 - 类似： `apply()` [[apply方法]]
 - **手写Call**
 	- 理解以下代码
-		- 使用Simbol [[Symbol]]创建：
+		- 使用Symbol [[Symbol]]创建：
 			- 使key成为唯一键名，避免与context中已有属性名冲突
 		- `context[key]`：
 			- 上下文是一个对象，将作为this
