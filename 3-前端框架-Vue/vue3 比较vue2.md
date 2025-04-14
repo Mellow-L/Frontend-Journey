@@ -1,0 +1,21 @@
+提问：Vue 3 相比 Vue 2 的主要改进？（变化也放进来了）
+回答思路：
+- 响应式系统：
+	- Vue 3 使用 `Proxy` 替代 `Object.defineProperty`，提供更全面的对象监听，包括新增、删除属性和数组下标的变化。[[vue响应式原理]]
+- Composition API --组合式API  
+	- [[Composition API]]（与OptionsAPI的区别也在这里）
+- 性能优化：​
+	- 通过静态提升、Patch Flag、Tree-shaking 等技术，减小打包体积，提升渲染性能。
+- TS支持：
+	- 支持更加完善，提供更好的类型推导和静态检查。
+- ​新增特性：
+	- ​引入 `Fragment`、`Teleport`、`Suspense` 等新特性，增强组件的灵活性和异步加载能力。
+- 生命周期钩子函数变化
+	- Vue 2：
+		- ​`beforeCreate`、`created`、
+		- `beforeMount`、`mounted`、`beforeUpdate`、`updated`、
+		- `beforeDestroy`、`destroyed`。
+	- Vue 3变为：
+		- ​`setup()`替代
+		- `onBeforeMount`、`onMounted`、`onBeforeUpdate`、`onUpdated` 描述改变
+		- `onBeforeUnmount`、`onUnmounted`替代

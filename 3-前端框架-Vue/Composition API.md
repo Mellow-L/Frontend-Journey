@@ -1,11 +1,17 @@
 Composition API（组合式API），区别于以往OptionsAPI（选项式API）。
+==区别==：
+- 组织方式：
+	- OptionsAPI要求变动 data，method，computed 三部分（选项）以实现一个功能或需求。
+	- 新的Composition API按照功能逻辑组织代码。（可以将js代码写在一整个< script >当中）
+- 逻辑复用：
+	- Composition API更容易提取和复用逻辑。
+- TS支持：
+	- Composition API提供了更好的类型推导。
 
-OptionsAPI要求变动 data，method，computed 三部分以实现一个功能或需求。
 
-而CompositionAPI可以将js代码写在一整个< script >当中.
 
 ```js
-<script setup lang="js"></script> -- setup语法糖
+<script setup lang="js"></script> // setup语法糖
 ```
 setup-组合式API入口点
 

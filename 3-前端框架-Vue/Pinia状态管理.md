@@ -109,7 +109,7 @@ function decrypObject(encoded_object){
 store的state在其他组件的导入
 - 使用**storeToRefs** 方法使store实例 内部state属性 转化为具有 `.value` 的 ref 对象集合
 	- 此方法不处理getter或action
-- [[watch监听 与 响应式数据]]
+- [[响应式数据与watch监听]]
 ```js
 import { useUserStore } from '@/stores/user';
 const useUser = useUserStore()
