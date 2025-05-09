@@ -1,0 +1,24 @@
+
+BFC（**块级格式化上下文**）
+- 一个**独立布局环境和渲染区域，其内部格式不影响外部**
+- 作用：
+	- 解决margin塌陷
+	- 清除浮动 [[浮动]]
+	- 自适应高度等问题。
+- **触发方式**：
+	- **控制溢出为不可见**。`overflow: hidden/auto/scroll;`
+		- 控制子元素溢出部分的显示，默认是visible可见的。
+			- hidden-隐藏
+		- 这样设置后，其子元素的margin不再与外部合并
+	- `display: flex/grid/inline-block/table;`
+		- **display属性-设置元素是否被视为块级或行级盒子作为子元素的布局。**
+		- display：flex。元素成为flex盒子，内部元素按Flex布局排列
+		- display：grid。grid布局
+		- inline-block。行内块元素。
+		- table。< table >布局
+		- `display: flow-root;`（现代方式）
+	- `float: left/right;`
+		- **float属性使元素脱离文档标准流**。在此元素的父容器的左/右浮动。
+	- `position: absolute/fixed;`
+		- 设置为absolute。脱离标准流。相对于最近的父元素定位。默认对齐左上角。
+		- fixed。元素相对于 视口（viewport） 进行固定定位，不随页面滚动
