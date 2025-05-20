@@ -1,4 +1,4 @@
-Axios网络请求库，本质是对XMLHttpREquest的封装
+Axios网络请求库，本质是对XMLHttpRequest的封装
 - 直接使用 
 - 或创建实例使用（不同实例不同配置，多个实例可对接不同后端服务）
 	- axios.create创建实例，可配置baseURL，timeout等
@@ -17,11 +17,11 @@ Axios网络请求库，本质是对XMLHttpREquest的封装
 function login() {
   axios.post('auth/jwt/login', qs.stringify(loginData))
     .then(res => {
-    data1.value = res.data;
-    axios. defaults. headers['authorization' ]='Bearer '+res.data.access_token;
+	    data1.value = res.data;
+	    axios. defaults. headers['authorization' ]='Bearer '+res.data.access_token;
     })
     .catch(err => {
-    data1.value = err;
+	    data1.value = err;
     })
 }
 ```

@@ -1,6 +1,6 @@
 - 异步与同步：Non-Blocking和Blocking，非阻塞和阻塞、
-- async 声明异步函数，返回promise对象
-- await 等待异步操作结果，实现异步操作同步化
+- **async 声明异步函数，返回promise对象**
+- **await** 等待异步操作结果，实现**异步操作同步化**
 	- ![[Pasted image 20250324164109.png]]
 - Promise对象-异步请求返回结果
 	- 比如axios返回res实际就是一个promise [[axios请求二次封装]]
@@ -78,3 +78,14 @@ export function apiGetMyComments(counter) {
 }
 ```
 - 实际是因为在定义此api函数时，用了async关键字，导致整体返回了一个包含Object的Promise，而不是可直接解构的Object。
+
+##### 异步编程解决方案
+
+| 异步方案                     | 是否推荐 | 特点说明                  |
+| ------------------------ | ---- | --------------------- |
+| 回调函数                     | ❌    | 易陷入回调地狱，难维护           |
+| Promise                  | ✅    | ES6 标准，链式调用           |
+| async/await（promise的语法糖） | ✅✅   | 最推荐！写法清晰，配合 try/catch |
+| Generator + co           | ⚠️   | 被 async/await 替代      |
+| RxJS                     | ✅    | 功能强大，学习成本高            |
+| Web Workers              | ✅    | 多线程计算型任务              |

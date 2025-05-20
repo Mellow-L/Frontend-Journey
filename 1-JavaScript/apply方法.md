@@ -1,4 +1,4 @@
-- 用于改变函数上下文，即改变其this的指向，传入参数。并直接调用一个函数。
+- 用于**改变函数上下文**，即改变其**this的指向**，传入参数。并直接调用一个函数。
 - 类似：call，bind [[call方法]]
 	- call：接收一系列单独参数（区别于apply，apply接受一个数组）`func.call(thisArg, arg1, arg2, ...);`
 	- bind：绑定指定的this和参数，返回新函数。（区别于apply，不返回而是立即调用）
@@ -6,7 +6,7 @@
 	- `func.apply(thisArg,[argsArray])`
 	- 参数中，前者为this指向
 	- 后者为执行时需要传递的参数列表
-- 实例1：理解apply
+- **实例1：理解apply**
 ```js
 function greet(message) {
   console.log(`${message}, ${this.name}!`);
